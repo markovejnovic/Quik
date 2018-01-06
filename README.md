@@ -15,7 +15,8 @@ You only need python. This was designed for python 2, but I don't see a reason w
 If you do decide to use Quik as a git submodule, it's as easy as:
 
 ```bash
-git submodule add https://github.com/markovejnovic/Quik.git```
+git submodule add https://github.com/markovejnovic/Quik.git
+```
 
 in your project directory.
 
