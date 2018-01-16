@@ -2,6 +2,7 @@ import unittest
 
 from Quik import Quik
 
+
 class TestSetSingulars(unittest.TestCase):
     def setUp(self):
         Quik.set_singulars({})
@@ -28,6 +29,7 @@ class TestSetSingulars(unittest.TestCase):
 
         self.assertTrue('requires a dict' in str(ctx.exception))
 
+
 class TestParseSingulars(unittest.TestCase):
     def test_1(self):
         # Tests if singular parsing works
@@ -36,7 +38,7 @@ class TestParseSingulars(unittest.TestCase):
             '420': 'Weed'
         }
 
-        Quik.set_singulars(TEST_SINGULARS) 
+        Quik.set_singulars(TEST_SINGULARS)
         self.assertEqual(Quik.parse_singulars(
             'Lorem ipsum doloret sit {a}met. {420}'),
             'Lorem ipsum doloret sit Amet. Weed')

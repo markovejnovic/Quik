@@ -10,6 +10,8 @@ I recommend downloading Quik as a git submodule, however, you are free to do as 
 
 You only need python. This was designed for `python2`, but I don't see a reason why it wouldn't work on `python3`.
 
+For unit tests, the `pep8` program is required.
+
 ### Installing
 
 If you do decide to use Quik as a git submodule, it's as easy as:
@@ -19,6 +21,17 @@ git submodule add https://github.com/markovejnovic/Quik.git
 ```
 
 in your project directory.
+
+### Development installation
+
+If you wish to do development, `pycodestyle` is necessary for code style tests. Installing it in a `virtualenv` is recommended.
+In your project directory:
+
+```bash
+virtualenv venv
+. venv/bin/activate
+pip install pycodestyle
+```
 
 ## Running the tests
 

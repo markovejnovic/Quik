@@ -23,6 +23,7 @@ For example:
 
 import re
 
+
 def html_parse(input_str):
     """Does all of the parsing into html form
 
@@ -30,9 +31,10 @@ def html_parse(input_str):
         input_str (str): The string to parse
 
     Returns:
-	str: An html parsed string
+        str: An html parsed string
     """
     return parse_singulars(input_str)
+
 
 """
 Singular-related functions
@@ -42,17 +44,19 @@ SUPPORTED_SINGULARS = {
     'R': '&reg;'
 }
 
+
 def get_singulars():
     """Returns the parsable singulars
-    
+
     Returns:
         dict: The parsable singulars dictionary
     """
     return SUPPORTED_SINGULARS
 
+
 def set_singulars(sing_dict):
     """Sets the parsable singulars
-    
+
     Args:
         sing_dict (dict): The new parsable singulars dictionary
     """
@@ -60,8 +64,8 @@ def set_singulars(sing_dict):
         global SUPPORTED_SINGULARS
 
         for key, value in sing_dict.iteritems():
-            if not isinstance(key, basestring) \
-                or not isinstance(value, basestring):
+            if (not isinstance(key, basestring) or not
+                    isinstance(value, basestring)):
                 raise AttributeError(
                     "set_singulars does not accept non-strings.")
 
@@ -69,29 +73,32 @@ def set_singulars(sing_dict):
     else:
         raise AttributeError("set_singulars() requires a dict.")
 
+
 def add_singular_definition(key, value):
     """Adds a new singular definition to the parsable singulars dictionary
-    
+
     Args:
         key (str): The singular key
         value (str): The singular value
     """
     SUPPORTED_SINGULARS[key] = value
 
+
 def parse_singulars(input_str):
     """Parses only the singulars in an html form
 
     Args:
-	input_str (str): The string to parse
+        input_str (str): The string to parse
 
     Returns:
-	str: An html parsed string
+        str: An html parsed string
     """
 
     for key, value in SUPPORTED_SINGULARS.iteritems():
         input_str = input_str.replace('{' + key + '}', value)
 
     return input_str
+
 
 def parse_containers(input_str):
     """Parses only the singulars in an html form
