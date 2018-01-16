@@ -8,7 +8,7 @@ I recommend downloading Quik as a git submodule, however, you are free to do as 
 
 ### Prerequisites
 
-You only need python. This was designed for python 2, but I don't see a reason why it wouldn't work on python3.
+You only need python. This was designed for `python2`, but I don't see a reason why it wouldn't work on `python3`.
 
 ### Installing
 
@@ -19,6 +19,22 @@ git submodule add https://github.com/markovejnovic/Quik.git
 ```
 
 in your project directory.
+
+## Running the tests
+
+The tests for this package are designed so they work with `python unittest` discovery. They are in the `test/` directory. Running all of the tests is as easy as:
+
+```bash
+sh ./run_tests.sh
+```
+
+### Unit tests
+
+The simple unit tests in `test_Quik` check for how well the whole `Quik` package works.
+
+### Coding style tests
+
+The coding style is planned to be according to `PEP8`, but these tests are not yet implemented.
 
 ## License
 

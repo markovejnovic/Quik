@@ -56,7 +56,18 @@ def set_singulars(sing_dict):
     Args:
         sing_dict (dict): The new parsable singulars dictionary
     """
-    SUPPORTED_SINGULARS = sing_dict
+    if type(sing_dict) is dict:
+        global SUPPORTED_SINGULARS
+
+        for key, value in sing_dict.iteritems():
+            if not isinstance(key, basestring) \
+                or not isinstance(value, basestring):
+                raise AttributeError(
+                    "set_singulars does not accept non-strings.")
+
+        SUPPORTED_SINGULARS = sing_dict
+    else:
+        raise AttributeError("set_singulars() requires a dict.")
 
 def add_singular_definition(key, value):
     """Adds a new singular definition to the parsable singulars dictionary
@@ -69,7 +80,7 @@ def add_singular_definition(key, value):
 
 def parse_singulars(input_str):
     """Parses only the singulars in an html form
-    
+
     Args:
 	input_str (str): The string to parse
 
@@ -81,4 +92,17 @@ def parse_singulars(input_str):
         input_str = input_str.replace('{' + key + '}', value)
 
     return input_str
+
+def parse_containers(input_str):
+    """Parses only the singulars in an html form
+
+    Args:
+        input_str (str): The string to parse
+
+    Returns:
+        str: An html parsed string
+
+    Todo:
+        Write the function
+    """
 
