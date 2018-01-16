@@ -10,7 +10,7 @@ I recommend downloading Quik as a git submodule, however, you are free to do as 
 
 You only need python. This was designed for `python2`, but I don't see a reason why it wouldn't work on `python3`.
 
-For unit tests, the `pep8` program is required.
+For unit tests, the `pycodestyle` program is required.
 
 ### Installing
 
@@ -47,7 +47,7 @@ The simple unit tests in `test_Quik` check for how well the whole `Quik` package
 
 ### Coding style tests
 
-The coding style is planned to be according to `PEP8`, but these tests are not yet implemented.
+The coding style is according to `PEP8`. These tests are easily runnable with `pyunittest Quik/ test/`.
 
 ## License
 
