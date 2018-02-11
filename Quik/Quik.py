@@ -100,6 +100,51 @@ def parse_singulars(input_str):
     return input_str
 
 
+def parse_sections(input_str):
+    """Parses the sections in the input string to html format
+    
+    This function will parse all of the sections '{sec}' into html format.
+    This format will appear as:
+        <div class="quik-section">
+            Content
+        </div>
+    Optionally, if the section has a name ('{sec name}') a <h2> will be created
+    inside the div, before the content.
+
+    Args:
+        input_str (str): The input string
+
+    Returns:
+        str: An html parsed string
+    """
+    first_sec = True
+    output = ""
+    split_strings = input_str.splitlines()
+    for i, line in enumerate(split_strings):
+        line = line.lstrip()
+        if "{sec}" in line:
+            if not first_sec:
+                output += '</div>'
+            output += '<div class="quik-section">'
+            first_sec = False
+        elif "{sec " in line:
+            if not first_sec:
+                output += '</div>'
+            output += '<div class="quik-section">'
+            first_sec = False
+            output += '<h2 class="quik-section-title">'
+            output += re.match(r'{sec (.*)}', line).group(1)
+            output += '</h2>'
+        else:
+            output += line
+
+        if i + 1 == len(split_strings):
+            if not first_sec:
+                output += '</div>'
+
+    return output
+
+
 def parse_containers(input_str):
     """Parses only the singulars in an html form
 
@@ -108,8 +153,5 @@ def parse_containers(input_str):
 
     Returns:
         str: An html parsed string
-
-    Todo:
-        Write the function
     """
-
+    return parse_sections(input_str)

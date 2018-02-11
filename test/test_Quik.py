@@ -1,6 +1,6 @@
 import unittest
 
-from Quik import Quik
+import Quik
 
 
 class TestSetSingulars(unittest.TestCase):
@@ -42,3 +42,52 @@ class TestParseSingulars(unittest.TestCase):
         self.assertEqual(Quik.parse_singulars(
             'Lorem ipsum doloret sit {a}met. {420}'),
             'Lorem ipsum doloret sit Amet. Weed')
+
+
+class TestParseContainers(unittest.TestCase):
+    def test_1(self):
+        TEST_STRING = \
+            ("{sec}\n"
+             "This is a section")
+        EXPECTED_OUTPUT = \
+            ('<div class="quik-section">'
+             'This is a section'
+             '</div>')
+
+        self.assertEqual(Quik.parse_containers(TEST_STRING), EXPECTED_OUTPUT)
+
+    def test_2(self):
+        TEST_STRING = \
+            ("{sec}\n"
+             "This is a section\n"
+             "{sec}\n"
+             "This is another section\n")
+        EXPECTED_OUTPUT = \
+            ('<div class="quik-section">'
+             'This is a section'
+             '</div>'
+             '<div class="quik-section">'
+             'This is another section'
+             '</div>')
+
+        self.assertEqual(Quik.parse_containers(TEST_STRING), EXPECTED_OUTPUT)
+
+    def test_titled_sections(self):
+        TEST_STRING = \
+            ("{sec}\n"
+             "This is a section\n"
+             "{sec title}\n"
+             "This is a titled section\n")
+
+        EXPECTED_OUTPUT = \
+            ('<div class="quik-section">'
+             'This is a section'
+             '</div>'
+             '<div class="quik-section">'
+             '<h2 class="quik-section-title">'
+             'title'
+             '</h2>'
+             'This is a titled section'
+             '</div>')
+
+        self.assertEqual(Quik.parse_containers(TEST_STRING), EXPECTED_OUTPUT)
