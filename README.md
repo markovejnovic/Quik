@@ -1,3 +1,8 @@
+# 🛑 [DEPRECATED] Deprecation
+
+This software proved totally unnecessary. I'm marking it as unfinished and archiving it. No further progress shall be done.
+Use [pandoc](https://pandoc.org).
+
 # Quik
 
 Quik is a very simple parsing engine for python. It's primary usage is for writing blogs, articles, websites, etc. It is LaTeX-like, in the sense that it does *not* follow a tree structure. At the moment, Quik supports only HTML output.
